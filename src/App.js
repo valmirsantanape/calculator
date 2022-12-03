@@ -64,49 +64,50 @@ const App = () => {
   }
 
   const handleDivision = () => {
-    if(firstNumber === "0") {
+    
+    if(currentNumber === '0') {
+      alert(`Impossivel a divisão por '0'. \nPor favor refaça a operação!`)
+      setClearNumber()
+     
+     }else if(firstNumber === "0") {
       setFirstNumber(String(currentNumber))
       setCurrentNumber('0')
       setOperation('/')
       
-    }
-    if(currentNumber === '0') {
-     alert(`Impossivel a divisão por '0'. \nPor favor refaça a operação!`)
-     setClearNumber()
-    
     }else{
       
         const division = Number(firstNumber) / Number(currentNumber);
         setCurrentNumber(String(division))
-        setOperation('/')
+        setOperation('')
 
     }
   }
 
   const handleEquals = () => {
-
-    if(firstNumber !== '0' && operation !== '' && currentNumber !== '0'){
+    
+    // if(firstNumber !== '0' && operation !== '' && currentNumber !== '0'){
+      
       switch(operation){
-        case '+':
+        case "+":
           handleSumNumbers();
           break;
-          
         
-        case '-':
+        case "-":
           handleSubtraction();
-          break
+          break;
         
-        case '*':
+        case "*":
           handleMultiplication();
-          break
+          break;
 
-        case '/':
+        case "/":
+          
           handleDivision();
           break;
 
         default:
           break;
-      }
+      //}
       
     }
     
@@ -142,6 +143,7 @@ const App = () => {
         
         <Button label="0" onClick={() => handleAddNumber('0')}/>
         <Button label="/" onClick={handleDivision}/>
+
         <Button label="+" onClick={handleSumNumbers}/>
 
 
